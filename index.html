@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvantum-Szövetség | A Belső Kastély Útja</title>
+    <style>
+        :root {
+            --primary-green: #2c3e2c;
+            --secondary-green: #5a715a;
+            --light-green: #7d8c7d;
+            --accent-green: #8a9b8a;
+            --background: #fefdf8;
+            --light-bg: #f9f7f1;
+            --border-color: #e8e4d8;
+            --text-color: #2c3e2c;
+            --quantum-blue: #4a6fa5;
+            --quantum-purple: #6d5b98;
+            --gold: #b8943c;
+            --accent-red: #e74c3c;
+            --accent-blue: #3498db;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--background);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(74, 111, 165, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(184, 148, 60, 0.03) 0%, transparent 20%);
+            padding: 1rem;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(254, 253, 248, 0.97);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--gold) 100%);
+            color: white;
+            position: relative;
+        }
+
+        .quantum-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.4;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.2) 0%, transparent 50%);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-style: italic;
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav {
+            background-color: var(--light-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-green);
+            font-size: 1.1rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-green);
+            background-color: rgba(255,255,255,0.7);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--gold);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 70%;
+        }
+
+        main {
+            padding: 3rem 2rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-question {
+            font-size: 2rem;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            color: var(--primary-green);
+            font-weight: normal;
+        }
+
+        .quote {
+            font-style: italic;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-left: 4px solid var(--gold);
+            background-color: var(--light-bg);
+            border-radius: 0 12px 12px 0;
+            font-size: 1.2rem;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-green);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--quantum-blue));
+            border-radius: 3px;
+        }
+
+        .paradox-container {
+            display: flex;
+            gap: 2rem;
+            margin: 2.5rem 0;
+            align-items: stretch;
+        }
+
+        .living-side, .rigid-side, .faith-side, .knowledge-side {
+            flex: 1;
+            padding: 2rem;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .living-side, .faith-side {
+            background: linear-gradient(135deg, #e8f0f8 0%, #d6e3f5 100%);
+            border: 1px solid var(--quantum-blue);
+        }
+
+        .rigid-side, .knowledge-side {
+            background: linear-gradient(135deg, #f8f4e8 0%, #f5f0d6 100%);
+            border: 1px solid var(--gold);
+        }
+
+        .side-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--quantum-blue);
+            text-align: center;
+        }
+
+        .rigid-side .side-title, .knowledge-side .side-title {
+            color: var(--gold);
+        }
+
+        .quantum-principle {
+            background: linear-gradient(135deg, #f0f8f0 0%, #e8f4e8 100%);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border: 2px dashed var(--secondary-green);
+        }
+
+        .principle-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            text-align: center;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .concept-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--gold);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--quantum-blue));
+        }
+
+        .concept-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .concept-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+        }
+
+        .concept-icon {
+            margin-right: 0.8rem;
+            font-size: 1.8rem;
+        }
+
+        .wisdom-box, .warning-box {
+            background: linear-gradient(135deg, #fff8e8 0%, #ffefd6 100%);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .wisdom-title, .warning-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #b8943c;
+            display: flex;
+            align-items: center;
+        }
+
+        .wisdom-icon, .warning-icon {
+            margin-right: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+        }
+
+        .conclusion {
+            text-align: center;
+            padding: 4rem 3rem;
+            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f2ea 100%);
+            border-radius: 15px;
+            border: 2px dashed var(--border-color);
+            position: relative;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .conclusion p {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            line-height: 1.6;
+        }
+
+        .final-quote {
+            font-style: italic;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            color: var(--light-green);
+        }
+
+        /* Új stílusok a kozmikus csomók oldalhoz */
+        .cosmic-knots {
+            background: linear-gradient(135deg, #e8e4d8 0%, #d6d2c4 100%);
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 12px;
+            border: 1px solid #c8c4b8;
+            position: relative;
+        }
+
+        .cosmic-knots::before {
+            content: '🌀';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            background: #fefdf8;
+            padding: 0 10px;
+        }
+
+        /* Stílusok a Meghívás oldalhoz */
+        .invitation-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background: #2ecc71;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .castle-section {
+            background: linear-gradient(135deg, #f9f7f1 0%, #f5f2ea 100%);
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 12px;
+            border: 1px solid #e8e4d8;
+            position: relative;
+        }
+
+        .castle-section::before {
+            content: '🏰';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            background: #fefdf8;
+            padding: 0 10px;
+        }
+
+        .jesus-teachings {
+            background: linear-gradient(135deg, #f0ede4 0%, #e8e4d8 100%);
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 12px;
+            border: 1px solid #d6d2c4;
+            position: relative;
+        }
+
+        .jesus-teachings::before {
+            content: '✝';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 1.8rem;
+            background: #fefdf8;
+            padding: 0 10px;
+            color: #5a715a;
+        }
+
+        .teaching-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: 6px;
+        }
+
+        .teaching-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #5a715a;
+            min-width: 30px;
+        }
+
+        .balance-point {
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, #f0f8f0 0%, #e8f4e8 100%);
+            border-radius: 10px;
+            border: 2px dashed var(--secondary-green);
+        }
+
+        .balance-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+
+        .bible-verse {
+            font-style: italic;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 3px solid #8a9b8a;
+            background-color: #f5f2ea;
+            color: #5a715a;
+            font-size: 1.1rem;
+        }
+
+        .story-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px dashed #e8e4d8;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f7f1;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .question:hover {
+            transform: translateY(-5px);
+        }
+
+        .silence-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            text-align: center;
+        }
+
+        .silence-symbol {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #5a715a;
+            opacity: 0.7;
+        }
+
+        .contrast-box {
+            background-color: #f5f2ea;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 8px;
+            border: 1px solid #e8e4d8;
+        }
+
+        .contrast-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #e8e4d8;
+        }
+
+        .contrast-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .physical, .spiritual {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        .physical {
+            border-right: 1px solid #e8e4d8;
+        }
+
+        .physical h3, .spiritual h3 {
+            color: #5a715a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: normal;
+        }
+
+        .symbol {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            color: #a8b8a8;
+        }
+
+        .transition-point {
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: #f5f2ea;
+            border-radius: 8px;
+            border: 2px dashed #a8b8a8;
+        }
+
+        @media (max-width: 768px) {
+            .paradox-container, .contrast-item {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links a {
+                margin: 0.3rem 0;
+                width: 80%;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-question {
+                font-size: 1.6rem;
+            }
+            
+            .section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .physical {
+                border-right: none;
+                border-bottom: 1px solid #e8e4d8;
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="quantum-field"></div>
+            <h1>Kvantum-Szövetség</h1>
+            <p class="subtitle">A Belső Kastély Útja - Ahol a magok csendje szól</p>
+        </header>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="showPage('home')">Kezdőlap</a></li>
+                <li><a href="#" onclick="showPage('mag')">A Mag</a></li>
+                <li><a href="#" onclick="showPage('surrender')">Az Átadás</a></li>
+                <li><a href="#" onclick="showPage('quantum-covenant')">Kvantum-Szövetség</a></li>
+                <li><a href="#" onclick="showPage('democracy')">Élő Demokrácia</a></li>
+                <li><a href="#" onclick="showPage('faith-knowledge')">Hit és Tudás</a></li>
+                <li><a href="#" onclick="showPage('bible')">Biblia Kvantum Szemmel</a></li>
+                <li><a href="#" onclick="showPage('invitation')">Meghívás</a></li>
+                <li><a href="#" onclick="showPage('awakening')">Az Ébredés</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Kezdőlap -->
+            <div id="home" class="page active">
+                <div class="hero">
+                    <p class="hero-question">
+                        "Mi van, ha minden, amit látsz...<br>
+                        ...csak díszlet?"
+                    </p>
+                    <button class="btn" onclick="showPage('mag')">Belépés a térbe</button>
+                </div>
+                
+                <div class="quote">
+                    A Kvantum-Szövetség nem új vallás, nem új tanítás. Csak ébresztés: emlékeztető arra, hogy a Forrás nem kívül van, hanem bennünk ébred.
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">A Kvantum-Szövetség Lényege</h2>
+                    
+                    <p>A kvantumfizika és a spiritualitás nem ellentétes területek, hanem ugyanannak a valóságnak különböző nyelven történő leírása. Amikor a Bibliát kvantumlencsén keresztül olvassuk, a régi szövegek új, mélyebb jelentést nyernek.</p>
+                    
+                    <div class="paradox-container">
+                        <div class="living-side">
+                            <h3 class="side-title">Kvantum Valóság</h3>
+                            <p>A kvantumfizika szerint a valóság alapja nem szilárd anyag, hanem energia, információ és kapcsolat. A részecskék egyszerre hullámok és részecskék, a helyzettől függően.</p>
+                            <p>A megfigyelő befolyásolja a megfigyeltet - a tudat része a valóságnak.</p>
+                        </div>
+                        <div class="rigid-side">
+                            <h3 class="side-title">Szentírási Valóság</h3>
+                            <p>A Biblia szerint a látható világ nem az egyetlen valóság. Létezik egy láthatatlan, szellemi valóság, amely alapvetőbb, mint a fizikai.</p>
+                            <p>"A hit pedig a reméltre vonatkozik, bizonyosság a nem láthatók mellett." (Zsidók 11:1)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion">
+                    <p>Fedezd fel a Belső Kastélyt!</p>
+                    <p>Látogasd meg a <strong>A Kastély</strong> oldalt, ahol részletesen bemutatjuk</p>
+                    <p>a belső út hat lakását a középpont felé.</p>
+                </div>
+            </div>
+
+            <!-- A Mag oldal -->
+            <div id="mag" class="page">
+                <h2 class="section-title">A Mag</h2>
+                
+                <div class="quote">
+                    "Nem másokat kell felébresztenem, hanem magamat ébren tartani."
+                </div>
+                
+                <p>
+                    A végleges válasz megnyugtat, de ha beleragadok, elválaszt attól, akit keresek.
+                    A hit nem tudás, hanem mozgás – figyelem Istenre, aki bennem figyel.
+                </p>
+                
+                <p>
+                    Minden kérdés, amit nem zárok le, egy nyitott ablak marad a Lélek felé.
+                    Ha ébren maradok, a jelenlétem önmagában fény – nem kell győznöm, 
+                    nem kell meg győznöm senkit, csak hagynom, hogy Isten mozduljon bennem tovább.
+                </p>
+                
+                <p>
+                    Ahogy a kvantumfizika a szubatomi szinten felismeri, hogy a valóság alapja nem szilárd anyag, hanem rezgés és kapcsolat, úgy a misztikus hit is ugyanebbe a mélységbe lát:
+                    a látható mögött nem a semmi van, hanem az Élő Jelenlét.
+                    Isten nem kívülről formálja a világot, hanem belülről hívja ébredésre a tudatot.
+                </p>
+                
+                <div class="quote">
+                    "Én és Isten, minden más csak díszlet."
+                </div>
+            </div>
+            
+            <!-- Az Átadás Titka oldal -->
+            <div id="surrender" class="page">
+                <h2 class="section-title">Nem Mi Irányítunk – Átadjuk Magunkat</h2>
+                
+                <div class="quote">
+                    "Van egy tudat, ami nagyobb mint mi,<br>
+                    és mi csak átadhatjuk magunkat neki."
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">A Félreértés Feloldása</h3>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🎮</span> Nem Mi Irányítunk</h4>
+                            <p><strong>Nem azt mondom:</strong> "A kezünkben van a sorsunk"<br>
+                            <strong>Hanem azt:</strong> "A kezünkben van, hogy átadjuk-e magunkat"</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🌊</span> Mi Vagyunk a Hullámok</h4>
+                            <p>Nem mi vagyunk a folyó – hanem a <strong>hullámok</strong> benne.<br>
+                            Nem mi teremtjük az áramlást – de <strong>mi dönthetjük el, ellenállunk-e</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Két Megközelítés</h3>
+                    
+                    <div class="paradox-container">
+                        <div class="living-side">
+                            <h3 class="side-title">Mi Vagyunk a Forrás (Téves)</h3>
+                            <ul>
+                                <li>Én teremtek</li>
+                                <li>Én irányítok</li>
+                                <li>Én döntök</li>
+                                <li>Én vagyok a középpont</li>
+                            </ul>
+                        </div>
+                        <div class="rigid-side">
+                            <h3 class="side-title">Átadjuk Magunkat a Forrásnak (Igaz)</h3>
+                            <ul>
+                                <li>Átengedi magát rajtam</li>
+                                <li>Ő irányít én áramlok.</li>
+                                <li>Együtt döntünk</li>
+                                <li>Ő a középpont</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Hívhatjuk Akárhogy – A Lényeg Ugyanaz</h3>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🙏</span> Isten</h4>
+                            <p>Aki Atyánk</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🌌</span> Forrás</h4>
+                            <p>Ahonnan eredünk</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🛤️</span> Tao</h4>
+                            <p>Az útnak</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🌍</span> Brahman</h4>
+                            <p>A mindenségnek</p>
+                        </div>
+                    </div>
+                    
+                    <div class="wisdom-box">
+                        <h4 class="wisdom-title"><span class="wisdom-icon">🔒</span> A Megismerés Korlátai</h4>
+                        <p><strong>"Csak annyit tudunk róla, amit ő akar"</strong><br>
+                        Nem felfedezni akarjuk – hanem <strong>megtérni hozzá</strong> – a bizalmunk az amit keresünk.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Gyakorlati Átadás – Hogyan Néz Ez Ki?</h3>
+                    
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">🌅</div>
+                            <div class="step-content">
+                                <h4 class="step-title">Reggel</h4>
+                                <p>"Nem én csinálom a napomat – hanem átadom, hogy Ő csinálja általam"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-step">
+                            <div class="step-number">💭</div>
+                            <div class="step-content">
+                                <h4 class="step-title">Gondolatnál</h4>
+                                <p>"Ha félelmek gyötörnek elmondhatom: Ez az én gondolatom, de rá is bízhatom magamat. - Legyen meg a te akaratod."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flow-step">
+                            <div class="step-number">🤲</div>
+                            <div class="step-content">
+                                <h4 class="step-title">Nehézségnél</h4>
+                                <p>"Megteszem ami rajtam múllik de tudom, hogy Ő jobban tudja mi jó nekem."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    "Nem én, hanem a Krisztus, aki bennem él."<br>
+                    <strong>– Galata 2:20</strong>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">A Szabad Akarat Igazi Jelentése</h3>
+                    
+                    <div class="balance-point">
+                        <h3 class="balance-title">Nem az, hogy mi döntünk</h3>
+                        <p>hanem hogy <strong>dönthetünk arról, hogy ki döntsön</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="conclusion">
+                    <p>Nem a mi kezünkben van a sorsunk –</p>
+                    <p>a mi kezünkben van, hogy</p>
+                    <p><strong>átadjuk-e a sorsunkat</strong></p>
+                    <p>annak, aki tényleg tudja, mi a jó számunkra.</p>
+                </div>
+            </div>
+
+            <!-- Kvantum-Szövetség oldal -->
+            <div id="quantum-covenant" class="page">
+                <h2 class="section-title">Mi az a Kvantum-Szövetség?</h2>
+                
+                <div class="quote">
+                    "A tudomány és a spiritualitás ugyanazt a valóságot írja le,<br>
+                    csak más-más nyelven beszélnek róla."
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Két Nyelv – Egy Valóság</h3>
+                    
+                    <div class="paradox-container">
+                        <div class="living-side">
+                            <h3 class="side-title">Kvantumfizika Nyelven</h3>
+                            <p>A valóság alapja nem szilárd anyag, hanem <strong>hullámfüggvények, valószínűségi mezők</strong>. 
+                            Minden összefonódik – ami itt történik, az ott is befolyásol.</p>
+                        </div>
+                        <div class="rigid-side">
+                            <h3 class="side-title">Spirituality Nyelven</h3>
+                            <p>A valóság alapja nem anyag, hanem <strong>Isten akarata, a Tao, a Lélek</strong>. 
+                            Minden része egymásnak – ami velem történik, az mindenkire hat.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Párhuzamok</h3>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🔗</span> Összefonódás</h4>
+                            <p><strong>Kvantum:</strong> Minden kapcsolódik</p>
+                            <p><strong>Spirituális:</strong> Minden Istenben egy</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🌊</span> Hullám-Részecske Kettősség</h4>
+                            <p><strong>Kvantum:</strong> Forma és energia</p>
+                            <p><strong>Spirituális:</strong> Test és Lélek</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">👁️</span> Megfigyelő Hatása</h4>
+                            <p><strong>Kvantum:</strong> A tudat alakít</p>
+                            <p><strong>Spirituális:</strong> A hit mozgat</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">∞</span> Valószínűségi Mező</h4>
+                            <p><strong>Kvantum:</strong> Minden lehetséges</p>
+                            <p><strong>Spirituális:</strong> Minden lehetőség Őbenne</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Gyakorlati Példák a Mindennapokból</h3>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">💭</span> Amikor aggódsz valamiért</h4>
+                            <p><strong>Kvantum szemszögből:</strong> Aggodalmad valószínűségi mezőt teremt, ami vonzza azt, amitől félsz.</p>
+                            <p><strong>Spirituális szemszögből:</strong> A hitetlenkedés elválaszt Isten békéjétől.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">❤️</span> Amikor szeretsz valakit</h4>
+                            <p><strong>Kvantum szemszögből:</strong> Rezgéseitek összehangolódnak, energiát cseréltek.</p>
+                            <p><strong>Spirituális szemszögből:</strong> Krisztus szeretete áramlik rajtatok keresztül.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🎭</span> Amikor nehézségeid vannak</h4>
+                            <p><strong>Kvantum szemszögből:</strong> A "díszlet" tükrözi belső konfliktusaidat.</p>
+                            <p><strong>Spirituális szemszögből:</strong> Isten a nehézségeken keresztül tanít.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Miért Fontos Ez Ma?</h3>
+                    
+                    <p>A kvantum-szövetség <strong>nem új vallás</strong>, hanem új <strong>megértési mód</strong>.</p>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🌉</span> Hidat Ver</h4>
+                            <p>Hidat ver a hit és tudomány között – így mindkettőt mélyebben értjük.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🔍</span> Magyarázatot Ad</h4>
+                            <p>Magyarázatot ad a spirituális tapasztalatokra – nem csak "hinned kell", hanem megértheted is.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🕊️</span> Békét Hoz</h4>
+                            <p>Békét hoz a szívbe – mert látod, hogy minden rendben van, minden értelmes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    "Ami ugyanis nem látható belőle: az ő örök hatalma és istensége, <br> az a világ teremtésétől fogva alkotásainak értelmes vizsgálata révén meglátható.<br> Ennélfogva nincs mentségük,..."<br>
+                    <strong>– Róma 1:20</strong>
+                </div>
+
+                <div class="conclusion">
+                    <p>A kvantum-szövetség egyszerűen azt jelenti:</p>
+                    <p><strong>Isten a fizika törvényeiben IS megnyilvánul,</strong></p>
+                    <p><strong>és a fizika törvényei Isten akaratából IS származnak.</strong></p>
+                    <p>Két nyelv – egy Igazság.</p>
+                </div>
+            </div>
+
+            <!-- Élő Demokrácia oldal -->
+            <div id="democracy" class="page">
+                <h2 class="section-title">Élő Demokrácia - A Politika Mint Élő Kapcsolat</h2>
+                
+                <div class="quote">
+                    "Mi van, ha a demokrácia nem a többség uralma,<br>
+                    hanem a különbözőségek összhangja?"
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">A Politika Élő Lényege</h3>
+                    
+                    <p>A demokrácia nem mechanikus folyamat, hanem élő kapcsolat a polgárok és közösségeik között. Ahogy a kvantumrészecskék nem léteznek elkülönítve, hanem összefonódva, úgy a politikai nézetek is egymásra utalnak és egymást alakítják.</p>
+                    
+                    <div class="paradox-container">
+                        <div class="living-side">
+                            <h3 class="side-title">Élő Politika</h3>
+                            <p>Amikor a pártok hitként kezelik elképzeléseiket:</p>
+                            <ul>
+                                <li>Nyitottak az új információra</li>
+                                <li>Hajlandóak átalakulni</li>
+                                <li>Elismerik saját korlátaikat</li>
+                                <li>Látják a másik nézőpont értékét</li>
+                                <li>Áramolnak a változó valósággal</li>
+                            </ul>
+                        </div>
+                        <div class="rigid-side">
+                            <h3 class="side-title">Merev Politika</h3>
+                            <p>Amikor a pártok tudásként kezelik elképzeléseiket:</p>
+                            <ul>
+                                <li>Bezárkóznak a bizonyítékok elől</li>
+                                <li>Ellenállnak a változásnak</li>
+                                <li>Abszolút igazságot követelnek</li>
+                                <li>Elutasítják a másik nézőpontot</li>
+                                <li>Elszakadnak a valóságtól</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="quantum-principle">
+                        <h3 class="principle-title">A Kvantum-Szövetség Megközelítése</h3>
+                        <p>A politika nem a hatalomról szól, hanem a kapcsolatról. Ahogy a kvantumrészecskék összefonódnak, úgy mi is összefonódunk egymással. A jó kormányzás nem az egyetlen "helyes" út megtalálásáról szól, hanem arról, hogy megtaláljuk a közös utat a különböző utak között.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">Az Élő Demokrácia Elvei</h3>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🌊</span> Folyékonyság</h4>
+                            <p>Az élő demokráciában a politikai nézetek folyamatosan alakulnak és fejlődnek. Nem végső álláspontok, hanem folyamatban lévő megértési kísérletek.</p>
+                            <p>Mint a víz, amely mindig megtalálja az útját, úgy a politikai gondolatok is folyamatosan keresik a legjobb megoldást.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🎭</span> Paradoxon Tűrése</h4>
+                            <p>Az élő politika megengedi, hogy ellentmondó igazságok egymás mellett éljenek. Nem kényszeríti rá az emberekre az "egyik vagy másik" választást.</p>
+                            <p>Mint a kvantumrészecske, amely egyszerre hullám és részecske, úgy a politikai megoldások is tartalmazhatnak látszólag ellentmondó elemeket.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🔗</span> Összefonódás</h4>
+                            <p>Minden politikai nézet kapcsolatban áll más nézetekkel. Az én érdekem összefonódik a te érdekeddel, a jelen összefonódik a jövővel.</p>
+                            <p>Nincs elkülönített megoldás - minden döntés hatással van az egész rendszerre.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion">
+                    <p>A demokrácia nem a végső válaszokról szól,</p>
+                    <p>hanem a folyamatos kérdezésről.</p>
+                    <p>Nem a többség uralmáról,</p>
+                    <p>hanem a kisebbségek hallgatásáról.</p>
+                </div>
+            </div>
+
+            <!-- Hit és Tudás oldal -->
+            <div id="faith-knowledge" class="page">
+                <h2 class="section-title">A Hit Élő Folyama</h2>
+                
+                <div class="quote">
+                    A hit nem ellentéte a tudásnak, hanem annak mélyebb dimenziója. Amikor a tudás a hit szolgálatába áll, nem merevít be, hanem szárnyat ad. Amikor azonban a tudás öncélúvá válik, akkor válik bálvánnyá, amely eltakarja a Forrást.
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">A Kérdés Mélysége</h3>
+                    
+                    <p>Érzed a feszültséget: egyrészt szeretnéd megérteni és magyarázni a spirituális tapasztalataidat, másrészt attól félsz, hogy a magyarázat maga elszakít a tapasztalattól.</p>
+                    
+                    <p>Ez a feszültség nem véletlen - a hit és tudás közötti kapcsolat egyik legmélyebb paradoxona. A válasz nem a tudás elutasításában rejlik, hanem a megfelelő viszony megtalálásában.</p>
+                    
+                    <div class="paradox-container">
+                        <div class="knowledge-side">
+                            <h3 class="side-title">A Tudás Kihívása</h3>
+                            <p>A tudás rendszerez, kategorizál, magyaráz. Ez hasznos, de veszélyes is lehet:</p>
+                            <ul>
+                                <li>A magyarázat helyettesítheti a tapasztalatot</li>
+                                <li>A rendszer börtönné válhat</li>
+                                <li>A bizonyítás öncélúvá válik</li>
+                                <li>A misztérium elveszíti varázsát</li>
+                            </ul>
+                        </div>
+                        <div class="faith-side">
+                            <h3 class="side-title">A Hit Bizonytalansága</h3>
+                            <p>A hit pedig bizonytalan, kiszámíthatatlan, személyes:</p>
+                            <ul>
+                                <li>Követel bizalmat a láthatatlanban</li>
+                                <li>Megköveteli az átadást</li>
+                                <li>Megengedi a kétséget</li>
+                                <li>Mindig újonnan születik</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="balance-point">
+                        <h3 class="balance-title">Az Egyensúly Pontja</h3>
+                        <p>A hit és tudás nem ellentétek, hanem két különböző módja az igazsággal való kapcsolatteremtésnek. Az egyik nem zárja ki a másikat.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">A Kvantum Paradigma Tanulságai</h3>
+                    
+                    <div class="paradox-container">
+                        <div class="knowledge-side">
+                            <h3 class="side-title">Kvantum Tudás</h3>
+                            <p>A kvantumfizika tanít minket arról, hogy a valóság nem determinisztikus és kiszámítható. A részecskék nem pontszerű objektumok, hanem valószínűségi hullámok.</p>
+                            <p>A tudás itt nem abszolút bizonyosságot ad, hanem lehetőségeket mutat. Pontosan ezt kell tennünk a spiritualitás terén is.</p>
+                        </div>
+                        <div class="faith-side">
+                            <h3 class="side-title">Kvantum Hit</h3>
+                            <p>A kvantumvalóságban a megfigyelő része a megfigyeltnek. Hasonlóképpen, a spirituális hitben sem vagyunk külső megfigyelők - részei vagyunk annak, amit meg akarunk érteni.</p>
+                            <p>A hit nem a valóságról szól, hanem a valósággal való kapcsolatunkról.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion">
+                    <p>A hit élő folyam, amely soha nem áll meg.</p>
+                    <p>A tudás pedig nem a part, hanem a tutaj,</p>
+                    <p>amely segít átkelni, de nem szabad rajta maradni.</p>
+                </div>
+            </div>
+
+            <!-- Biblia Kvantum Szemmel oldal -->
+            <div id="bible" class="page">
+                <h2 class="section-title">A Biblia Szubatomi Szemmel</h2>
+                
+                <div class="quote">
+                    "Mi van, ha a Biblia nem csak történetek gyűjteménye,<br>
+                    hanem kvantumfizikai igazságok leírása emberi nyelven?"
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">Kvantumfizika és Biblia Párhuzamai</h3>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">⚛️</span> Összefonódás</h4>
+                            <p><strong>Kvantum:</strong> Két részecske összekapcsolódhat úgy, hogy bármilyen távolságra is legyenek, az egyik állapota azonnal befolyásolja a másikat.</p>
+                            <p><strong>Biblia:</strong> "Testnek egyik tagja szenved, minden tag együtt szenved." (1Kor 12:26) - mindenki kapcsolatban áll mindenkivel.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">🌊</span> Hullám-Részecske Kettősség</h4>
+                            <p><strong>Kvantum:</strong> A fény egyszerre hullám és részecske - a megfigyelés módja határozza meg, melyik tulajdonság jelenik meg.</p>
+                            <p><strong>Biblia:</strong> Krisztus egyszerre ember és Isten - a hit és a megközelítés módja határozza meg, melyik aspektust tapasztaljuk.</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4 class="concept-title"><span class="concept-icon">👁️</span> Megfigyelő Hatása</h4>
+                            <p><strong>Kvantum:</strong> A megfigyelő jelenléte megváltoztatja a megfigyelt rendszert. A tudat része a valóságnak.</p>
+                            <p><strong>Biblia:</strong> "A hit pedig a reméltre vonatkozik, bizonyosság a nem láthatók mellett." (Zsid 11:1) - a hit megváltoztatja a valóságot.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">Bibliai Történetek Kvantum Szemmel</h3>
+                    
+                    <div class="jesus-teachings">
+                        <h3 class="story-title">A Teremtés (1Móz 1)</h3>
+                        <p>A Biblia szerint Isten szavával teremtette a világot: "Legyen világosság! És lett világosság."</p>
+                        
+                        <div class="quantum-interpretation">
+                            <h4 class="interpretation-title">Kvantum Értelmezés</h4>
+                            <p>A teremtés nem anyagi dolgok fizikai létrehozásáról szól, hanem a kvantumlehetőségek konkrét valósággá válásáról. Isten, mint Végső Megfigyelő, a tudatával "összeomlasztja" a kvantumlehetőségek hullámfüggvényét, így hozva létre a konkrét valóságot.</p>
+                            <p>A "Legyen...!" nem fizikai parancs, hanem kvantum-mező aktiválása - a lehetőségek valósággá válása a Végső Tudat hatására.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="jesus-teachings">
+                        <h3 class="story-title">Jézus Sétája a Vizen (Mt 14:22-33)</h3>
+                        <p>Jézus a víz felszínén sétált, majd Péter is képes volt erre, amíg hitt, de amikor megingott a hite, elkezdett sülyedni.</p>
+                        
+                        <div class="quantum-interpretation">
+                            <h4 class="interpretation-title">Kvantum Értelmezés</h4>
+                            <p>A víz felszínén járás metaforája a kvantum valóságban való mozgásra. Amikor Péter teljes mértékben hitt, a tudata megváltoztatta a valóságot - a víz szilárdnak mutatkozott számára.</p>
+                            <p>Amikor kételkedni kezdett, visszatért a hétköznapi valósághoz, ahol a víz folyékony. Ez illusztrálja, hogyan befolyásolja a tudat a fizikai valóságot.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion">
+                    <p>Fedezd fel a Bibliát új szemmel!</p>
+                    <p>A kvantum-szövetség nem ellentmond a Bibliának,</p>
+                    <p>hanem mélyebb megértést nyújt annak üzenetéről.</p>
+                </div>
+            </div>
+
+            <!-- Meghívás oldal -->
+            <div id="invitation" class="page">
+                <h2 class="section-title">Meghívás</h2>
+                
+                <div class="invitation-section">
+                    <h3 class="section-title">Nem Tanítás – Csak Egy Meghívás</h3>
+                    
+                    <div class="quote">
+                        "Voltam<br>
+                        Szenvedtem<br>
+                        Keresgettem<br>
+                        Azt hittem, találnom kell"
+                    </div>
+                    
+                    <div class="quote">
+                        "Aztán egyszer csak<br>
+                        annyira elfáradtam<br>
+                        a keresésben<br>
+                        hogy abbahagytam"
+                    </div>
+                    
+                    <div class="quote">
+                        "És abban a pillanatban<br>
+                        amikor nem kerestem már semmit<br>
+                        valami megtalált engem"
+                    </div>
+                    
+                    <div class="quote">
+                        "Nem volt hangja<br>
+                        nem volt formája<br>
+                        de tudtam<br>
+                        hogy szeret"
+                    </div>
+                    
+                    <div class="invitation-section">
+                        <p>Ha te is érzed,</p>
+                        <p>hogy a keresés már csak fáraszt,</p>
+                        <p>talán itt kezdődik</p>
+                        <p>valami más.</p>
+                        
+                        <button class="btn" onclick="showPage('awakening')">Fogadd a Meghívást</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Az Ébredés oldal -->
+            <div id="awakening" class="page">
+                <h2 class="section-title">Az Ébredés</h2>
+                
+                <div class="quote">
+                    "A történelem tele van tornyokkal és templomokkal,<br>
+                    amelyek az ember dicsőségét hirdették.<br>
+                    De minden, amit nem Isten hord, elnémul."
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">A Belső Fordulat</h3>
+                    
+                    <div class="story-section">
+                        <p>Fiatalon az elmémmel és az érzelmeimmel azonosítottam magam. Ettől az életem hullámzó, sötét és fájdalmas lett. A szenvedés elvezetett a határig.</p>
+                        
+                        <p>A meditáció megtanított megfigyelni, de még mindig harcoltam. Aztán egy látomásban a sátán hegyként tornyosult elém, én porszemként álltam vele szemben. Mögöttem Isten. Nem azt mondta: „Harcolj”, hanem: <strong>„Bízz bennem.”</strong></p>
+                        
+                        <p>A hegy ott maradt, de a félelem eltűnt. Megértettem, hogy nem legyőzni kell a sötétséget, hanem nem hinni benne. Nem a küzdelem, hanem a bizalom nyitotta meg bennem az utat a Forrás felé.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3 class="section-title">A Szövetség</h3>
+                    
+                    <div class="wisdom-box">
+                        <h4 class="wisdom-title"><span class="wisdom-icon">🤝</span> Nem Rendszer, Hanem Kapcsolat</h4>
+                        <p>A Kvantum–Szövetség nem rendszer, nem vallás, nem tanítás. Csak emlékeztető, hogy a Forrással való kapcsolat <strong>nem múlt el</strong>, csak feledésbe merült.</p>
+                        <p>Amikor a szív elcsendesedik, újra hallani kezdjük egymást a szeretet nyelvén. Ez a Szövetség kezdete — Isten és ember újra találkozik, nem formában, hanem lélekben.</p>
+                    </div>
+                    
+                    <div class="wisdom-box">
+                        <h4 class="wisdom-title"><span class="wisdom-icon">🌍</span> A Világ Elfogadása</h4>
+                        <p>Nem a mi dolgunk megváltoztatni a világot. Ha azon mesterkedünk, újra a küzdés logikájába esünk — ugyanabba a hatalom‑ és versenyjátékba, amely elválasztotta egymástól az embereket. Hívásunk más: <strong>elfogadni a világot úgy, ahogy van</strong>, és abban a jelen valóságban megélni Isten szeretetét.</p>
+                    </div>
+                </div>
+                
+                <div class="conclusion">
+                    <p>Az ébredés nem egy esemény, ami megtörténik,</p>
+                    <p>hanem egy folyamat, ami <strong>minden pillanatban</strong> zajlik.</p>
+                    <p>Nem a jövőben vár rád,</p>
+                    <p>hanem itt és most, ebben a pillanatban.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Kvantum-Szövetség | A Belső Kastély Útja</p>
+            <p>"Ahol a magok csendje szól"</p>
+        </footer>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Elrejtjük az összes oldalt
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Megjelenítjük a kiválasztott oldalt
+            document.getElementById(pageId).classList.add('active');
+            
+            // Frissítjük az aktív navigációs linket
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            // Görgetés az oldal tetejére
+            window.scrollTo(0, 0);
+        }
+        
+        // Alapértelmezett oldal betöltése
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
